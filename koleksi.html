@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Koleksi Buku Digital</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+      .search-box {
+        max-width: 400px;
+        margin: 0 auto 2rem auto;
+        display: flex;
+      }
+      .search-box input {
+        width: 100%;
+        padding: 0.6rem;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 1rem;
+      }
+
+      .pagination-modern {
+        display: flex;
+        justify-content: center;
+        gap: 0.4rem;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+      }
+
+      .pagination-modern button {
+        padding: 6px 12px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        background: var(--color-blue-600);
+        color: white;
+        font-weight: 600;
+        transition: 0.2s;
+      }
+
+      .pagination-modern button.active {
+        background: var(--color-gray-800);
+      }
+
+      .pagination-modern span {
+        padding: 6px 10px;
+        color: var(--color-gray-700);
+        font-weight: bold;
+      }
+
+      /* =============================== */
+      /*         BOOK CARD STYLE        */
+      /* =============================== */
+
+      .book-grid {
+        display: grid;
+        gap: 2rem;
+        /* [MODIFIKASI] Grid responsif otomatis */
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      }
+
+      .book-card {
+        background: var(--color-white);
+        border-radius: 0.75rem;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        text-align: center;
+        padding-bottom: 1rem;
+        /* [MODIFIKASI] Transisi untuk hover */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      /* [MODIFIKASI] Efek hover untuk kartu */
+      .book-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.15);
+      }
+
+      /* [MODIFIKASI] Wadah cover dengan rasio aspek 187:249 */
+      .book-cover {
+        width: 100%;
+        position: relative;
+        /* Rasio Tinggi/Lebar (249 / 187 * 100%) */
+        padding-top: calc(249 / 187 * 100%);
+        overflow: hidden;
+        background-color: #f4f4f7; /* Latar belakang jika gambar gagal dimuat */
+      }
+
+      /* [MODIFIKASI] Gambar di dalam wadah cover */
+      .book-cover img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Memastikan gambar mengisi penuh (crop jika perlu) */
+        object-position: center top; /* Fokus di bagian atas jika di-crop */
+      }
+
+      .book-card h3 {
+        margin: 1rem;
+        color: var(--color-gray-900);
+        font-size: 1.25rem;
+        font-weight: 700;
+        /* [MODIFIKASI] Menyamakan tinggi judul agar tombol sejajar */
+        min-height: 3.75rem;
+      }
+
+      .book-desc {
+        color: var(--color-gray-600);
+        padding: 0 1rem;
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+      }
+
+      .book-btn {
+        display: inline-block;
+        padding: 0.5rem 1.25rem;
+        background: var(--color-blue-600);
+        color: var(--color-white);
+        border-radius: 999px;
+        font-weight: 600;
+        transition: background 0.3s;
+      }
+
+      .book-btn:hover {
+        background: var(--color-blue-700);
+      }
+
+      /* Blok @media (min-width: 768px) tidak lagi diperlukan untuk .book-grid */
+
+      /* --- Tambahan untuk Tampilan Modern (Polish) --- */
+
+      /* Feedback visual saat search box diketik */
+      .search-box input:focus {
+        outline: 2px solid var(--color-blue-600);
+        outline-offset: 2px;
+        border-color: var(--color-blue-600);
+      }
+
+      /* Style untuk tombol pagination (disabled) */
+      .pagination-modern button:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
+
+      /* [MODIFIKASI] Efek hover untuk tombol paginasi */
+      .pagination-modern button:not(:disabled):not(.active):hover {
+        background: var(--color-blue-700);
+      }
+
+      @media (max-width: 600px) {
+        .book-grid {
+          gap: 1rem;
+
+          /* [MODIFIKASI] 
+      Paksa untuk selalu menampilkan 2 kolom
+    */
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .book-card h3 {
+          /* [MODIFIKASI] 
+      Kecilkan font karena kartu lebih sempit
+    */
+          font-size: 1rem; /* Lebih kecil agar pas di 2 kolom */
+
+          /* [MODIFIKASI] 
+      Sesuaikan tinggi minimal untuk 2 baris
+      (1.0rem * ~1.5 line-height * 2 lines)
+    */
+          min-height: 3rem;
+        }
+
+        .book-btn {
+          /* [MODIFIKASI] 
+      Kecilkan tombol agar proporsional
+    */
+          padding: 0.3rem 0.8rem;
+          font-size: 0.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <a href="landingPage.html">LiterasiDigital</a>
+        </div>
+        <div class="nav-menu-desktop">
+          <a href="landingPage.html">Home</a>
+          <a href="koleksi.html">Koleksi Buku</a>
+        </div>
+      </div>
+    </nav>
+
+    <section id="koleksi">
+      <div class="container">
+        <div class="section-title">
+          <h2>Koleksi Buku Digital</h2>
+          <p>Pilih buku dan baca langsung melalui Google Drive</p>
+        </div>
+
+        <div class="search-box">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Cari judul buku..."
+          />
+        </div>
+
+        <div class="book-grid" id="bookContainer"></div>
+
+        <div class="pagination-modern" id="paginationNumbers"></div>
+      </div>
+    </section>
+
+    <script>
+      const books = [
+        {
+          title: "Modul Keamanan Digital",
+          link: "https://drive.google.com/file/d/1ueb0Igq2_O6TVRk6BOlq_NzMzhkWUC5a/view",
+          cover: "foto buku/modul keamanan digital.webp",
+        },
+        {
+          title: "Modul Whatsapp Untuk Anak",
+          link: "https://drive.google.com/file/d/1w3G4D0q-u894edn4pwBalA84N9SJ9765/view",
+          cover: "foto buku/Modul Whatsapp Untuk Anak.webp",
+        },
+        {
+          title: "Modul Etis Bermedia Digital",
+          link: "https://drive.google.com/file/d/1zg3HR-6RYcukW7o7c0BcO99JdnAtDCVx/view",
+          cover: "foto buku/Modul Etis Bermedia Digital.webp",
+        },
+        {
+          title: "AI as a Future Technology of Work",
+          link: "https://drive.google.com/file/d/1HFFswKLwamBK-6Rxv4eUI_chEjcKxMwR/view",
+          cover: "foto buku/AI as a Future Technology of Work.webp",
+        },
+        {
+          title: "Judi Itu Candu: Panduan Anti Judi Online",
+          link: "https://drive.google.com/drive/folders/1Ne2bg9gQXRyr3xOoXfYmb55w-j5aN_52",
+          cover: "foto buku/Panduan Anti Judi Online.webp",
+        },
+        {
+          title: "WASPADA KEJAHATAN PHISHING ATTACK!",
+          link: "https://drive.google.com/file/d/13u3_36EFPM-m7SLfWoHGRBxOd0V8LYDo/view",
+          cover: "foto buku/WASPADA KEJAHATAN PHISHING ATTACK!.webp",
+        },
+        {
+          title: "Awas Kejebak Hoaks",
+          link: "https://drive.google.com/file/d/1rTnnjNeZwYXJJw_BFyg4uTSd_CO6ov_n/view",
+          cover: "foto buku/Awas Kejebak Hoaks.webp",
+        },
+        {
+          title: "Aktif Lawan Konten Negatif",
+          link: "https://drive.google.com/file/d/11FDJRYLlRzRZ_0PpQe_1F3gRLxh-qsWB/view",
+          cover: "foto buku/Aktif Lawan Konten Negatif.webp",
+        },
+        {
+          title: "Paham Etiket di Dunia Internet",
+          link: "#",
+          cover: "foto buku/Resep Menjadi Netizen Beradab.webp", // Perlu konfirmasi judul
+        },
+        {
+          title: "Jaga Data Pribadimu",
+          link: "https://drive.google.com/file/d/12Vk3I0zcal_JpKnxICJHGBYnJQNs3n2m/view",
+          cover: "foto buku/Jaga Data Pribadimu.webp",
+        },
+        {
+          title: "Berkomentarlah Dengan Bijak Agar Sosmed jadi Enak",
+          link: "https://drive.google.com/file/d/1Ne_v2Giv8LCBVphgdJIxgl1wsBDL2qwk/view",
+          cover:
+            "foto buku/Berkomentarlah Dengan Bijak Agar Sosmed jadi Enak.webp",
+        },
+        {
+          title:
+            "Mewujudkan UMKM Cakap Digital dan Paham Pelindungan Data Pribadi",
+          link: "https://drive.google.com/file/d/1FX8Be6BOOln_ei1niyVdkMJ7zuNzfaUI/view",
+          cover: "foto buku/Mewujudkan UMKM Cakap Digital.webp",
+        },
+        {
+          title: "Tiga Tantangan Utama Transformasi Digital Indonesia",
+          link: "https://drive.google.com/file/d/1WMt7fcqtFnpBmaszWIy5k7Mo8c6uPBaq/view",
+          cover:
+            "foto buku/Tiga Tantangan Utama Transformasi Digital Indonesia.webp",
+        },
+        {
+          title: "Panduan Jadi Konten Kreator Berani Baik",
+          link: "https://drive.google.com/file/d/1vf0sLlEm8_ub6BotTWwJz5Lkj7dzD8ls/view",
+          cover: "foto buku/Panduan Jadi Konten Kreator Berani Baik.webp",
+        },
+
+        // === Tambahan buku terbaru ===
+        {
+          title:
+            "Manajemen Strategi dan Praktik Komunikasi Publik Via Kanan Digital",
+          link: "https://drive.google.com/file/d/1V8QzJSkK3qXymn_wgxjOXCL_RDzTAKcl/view",
+          cover:
+            "foto buku/Manajemen Strategi dan Praktik Komunikasi Publik Via Kanan Digital.webp",
+        },
+        {
+          title: "Media Sosial VS Perundingan Siber",
+          link: "https://drive.google.com/file/d/1G5yQbqhruW7LjOef46d27OL3z7H4Hifw/view",
+          cover: "foto buku/Media Sosial VS Perundingan Siber.webp",
+        },
+        {
+          title: "Peluang dan Risiko Penggunaan AI dalam Iklan Politik",
+          link: "https://drive.google.com/file/d/1-tYLBNx_H1CGQgfCc4ZXwU0lwzGQdRwq/view",
+          cover:
+            "foto buku/Peluang dan Risiko Penggunaan AI dalam Iklan Politik.webp",
+        },
+        {
+          title: '"Cashless Society" di Indonesia: Risiko dan Tantangan',
+          link: "https://drive.google.com/file/d/1MOQAka7wB4fWgjaQvOcVrcLVjrGpF6bg/view",
+          cover:
+            "foto buku/Cashless Society di Indonesia  Risiko dan Tantangan.webp",
+        },
+        {
+          title: "Modul Strategi Hidup di Dunia Digital",
+          link: "https://drive.google.com/file/d/1XByrfKmOccepu_WLYXr27B1AP2weP3uB/view",
+          cover: "foto buku/Modul Strategi Hidup di Dunia Digital.webp",
+        },
+        {
+          title: "Membentuk Netizen Tangguh Untuk Indonesia Tumbuh",
+          link: "https://drive.google.com/file/d/1dfUZjCSa4dMYZL4-_g9o_J4yvUzY0HvQ/view",
+          cover:
+            "foto buku/Membentuk Netizen Tangguh Untuk Indonesia Tumbuh.webp",
+        },
+        {
+          title: "Cyberlaw dan Revolusi Industri 4.0",
+          link: "https://drive.google.com/file/d/1TA9Hcb_aaENQaquzqM6xYoURmaNN2097/view",
+          cover: "foto buku/Cyberlaw dan Revolusi Industri 4.0.webp",
+        },
+        {
+          title: "Muslim Millenial Ramah Digital",
+          link: "https://drive.google.com/file/d/15AeHRC_jIU0mN8cBQpDl0C7p8s_OVQOY/view",
+          cover: "foto buku/Muslim Millenial Ramah Digital.webp",
+        },
+        {
+          title:
+            "SSO Pakai Internet Secara Sehat & Cerdas di Sekolah (Buku Aktivitas Remaja)",
+          link: "https://drive.google.com/file/d/1ahPUuTrSoZe4PAiV5rLn-BDd1FknJ8Vr/view",
+          cover:
+            "foto buku/SSO Pakai Internet Secara Sehat & Cerdas di Sekolah (Buku Aktivitas Remaja).webp",
+        },
+        {
+          title:
+            "Strategi Kewirausahaan Digital",
+          link: "https://drive.google.com/file/d/1UBW2WSOTBisa_oP3foa7AiE2dAyHcpqq/view",
+          cover:
+            "foto buku/Strategi Kewirausahaan Digital.webp",
+        },
+      ];
+
+      const itemsPerPage = 6;
+      let currentPage = 1;
+      let filteredBooks = books;
+
+      function displayBooks(page) {
+        const container = document.getElementById("bookContainer");
+        container.innerHTML = "";
+
+        const start = (page - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+        const booksToShow = filteredBooks.slice(start, end);
+
+        if (booksToShow.length === 0) {
+          container.innerHTML = "<p>Tidak ada buku ditemukan.</p>";
+          // [MODIFIKASI] Tetap panggil generatePageNumbers agar tombol paginasi hilang
+          generatePageNumbers();
+          return;
+        }
+
+        booksToShow.forEach((book) => {
+          /* [MODIFIKASI] 
+            Struktur HTML kartu diubah.
+            <img class="book-cover"> diubah menjadi
+            <div class="book-cover"><img ...></div>
+            Ini untuk mendukung rasio aspek yang "pas".
+          */
+          container.innerHTML += `
+                <div class="book-card">
+                    <div class="book-cover">
+                        <img src="${book.cover}" alt="cover">
+                    </div>
+                    <h3>${book.title}</h3>
+                    <a href="${book.link}" target="_blank" class="book-btn">Baca Sekarang</a>
+                </div>
+              `;
+        });
+
+        generatePageNumbers();
+      }
+
+      function generatePageNumbers() {
+        const pagination = document.getElementById("paginationNumbers");
+        pagination.innerHTML = "";
+
+        const totalPages = Math.ceil(filteredBooks.length / itemsPerPage);
+
+        // [MODIFIKASI] Jangan tampilkan paginasi jika hanya ada 1 halaman atau tidak ada hasil
+        if (totalPages <= 1) return;
+
+        // Button Previous <
+        pagination.innerHTML += `
+        <button onclick="gotoPage(${currentPage - 1})" ${
+          currentPage === 1 ? "disabled" : ""
+        }>&lt;</button>
+        `;
+
+        // Page 1
+        pagination.innerHTML += `
+        <button class="${
+          currentPage === 1 ? "active" : ""
+        }" onclick="gotoPage(1)">1</button>
+        `;
+
+        // Ellipse left
+        if (currentPage > 3) {
+          pagination.innerHTML += `<span>...</span>`;
+        }
+
+        // Middle pages (currentPage -1 , currentPage, currentPage +1)
+        for (let i = currentPage - 1; i <= currentPage + 1; i++) {
+          if (i > 1 && i < totalPages) {
+            pagination.innerHTML += `
+                <button class="${
+                  currentPage === i ? "active" : ""
+                }" onclick="gotoPage(${i})">${i}</button>
+              `;
+          }
+        }
+
+        // Ellipse right
+        if (currentPage < totalPages - 2) {
+          pagination.innerHTML += `<span>...</span>`;
+        }
+
+        // Last Page
+        if (totalPages > 1) {
+          pagination.innerHTML += `
+              <button class="${
+                currentPage === totalPages ? "active" : ""
+              }" onclick="gotoPage(${totalPages})">${totalPages}</button>
+            `;
+        }
+
+        // Button Next >
+        pagination.innerHTML += `
+        <button onclick="gotoPage(${currentPage + 1})" ${
+          currentPage === totalPages ? "disabled" : ""
+        }>&gt;</button>
+        `;
+      }
+
+      function gotoPage(page) {
+        // [MODIFIKASI] Tambahkan penjaga agar tidak pindah ke halaman yang tidak valid
+        const totalPages = Math.ceil(filteredBooks.length / itemsPerPage);
+        if (page < 1 || page > totalPages) {
+          return;
+        }
+        currentPage = page;
+        displayBooks(currentPage);
+      }
+
+      document.getElementById("searchInput").addEventListener("input", (e) => {
+        const keyword = e.target.value.toLowerCase();
+        filteredBooks = books.filter((b) =>
+          b.title.toLowerCase().includes(keyword)
+        );
+        currentPage = 1;
+        displayBooks(currentPage);
+      });
+
+      displayBooks(currentPage);
+    </script>
+  </body>
+</html>

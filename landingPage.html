@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Literasi Digital untuk Pemuda</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <a href="#home">LiterasiDigital</a>
+        </div>
+        <div class="nav-menu-desktop">
+          <a href="#home">Home</a>
+          <a href="#materi">Materi</a>
+          <a href="#panduan">Panduan</a>
+          <a href="#galeri">Galeri</a>
+          <a href="#tentang">Tentang</a>
+          <a href="koleksi.html">Koleksi Buku</a>
+        </div>
+        <div class="nav-menu-toggle-wrapper">
+          <button id="menu-btn" class="nav-menu-toggle" aria-expanded="false">
+            <span class="sr-only"></span>
+            <svg
+              id="icon-burger"
+              class=""
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+            <svg
+              id="icon-close"
+              class="hidden"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div id="mobile-menu" class="nav-menu-mobile hidden">
+        <a href="#home">Home</a>
+        <a href="#materi">Materi</a>
+        <a href="#panduan">Panduan</a>
+        <a href="#galeri">Galeri</a>
+        <a href="#tentang">Tentang</a>
+        <a href="koleksi.html">Koleksi Buku</a>
+      </div>
+    </nav>
+
+    <main>
+      <section id="home" class="hero-section">
+        <div class="container">
+          <div class="hero-content">
+            <h1 class="scroll-animate">Literasi Digital untuk Pemuda</h1>
+            <p class="scroll-animate" style="transition-delay: 200ms">
+              Menavigasi Peluang dan Tantangan di Era Disrupsi Teknologi.
+            </p>
+            <div class="scroll-animate" style="transition-delay: 400ms">
+              <a href="#materi" class="hero-button"> Mulai Belajar </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="materi">
+        <div class="container">
+          <div class="section-title">
+            <h2 class="scroll-animate">Materi Dasar Literasi Digital</h2>
+            <p class="scroll-animate" style="transition-delay: 150ms">
+              Tiga pengetahuan utama agar kita dapat menggunakan teknologi
+              secara cerdas dan bertanggung jawab.
+            </p>
+          </div>
+
+          <div class="grid-container-3">
+            <!-- CARD 1 -->
+            <div class="card scroll-animate">
+              <div class="card-icon">
+                <!-- Icon Video / Media -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M7.5 4.5l9 7.5-9 7.5V4.5z"
+                  />
+                </svg>
+              </div>
+              <h3>Etika & Jejak Digital</h3>
+              <p>
+                Semua aktivitas online akan tersimpan sebagai jejak digital.
+                Maka penting untuk bersikap sopan, bijak, dan tidak membagikan
+                hal yang dapat merugikan diri sendiri maupun orang lain.
+              </p>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="card scroll-animate" style="transition-delay: 150ms">
+              <div class="card-icon">
+                <!-- Icon Shield / Safety -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 11.25a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M4.5 12c0-6 7.5-9 7.5-9s7.5 3 7.5 9-7.5 9-7.5 9-7.5-3-7.5-9z"
+                  />
+                </svg>
+              </div>
+              <h3>Keamanan & Privasi Online</h3>
+              <p>
+                Belajar melindungi password, data pribadi, dan akun dari
+                penyalahgunaan dengan cara menggunakan keamanan ganda, tidak
+                sembarang klik link, dan berhati-hati saat berbagi data.
+              </p>
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="card scroll-animate" style="transition-delay: 300ms">
+              <div class="card-icon">
+                <!-- Icon List / Info -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M10.5 6h9m-9 6h9m-9 6h9M4.5 6h.01M4.5 12h.01M4.5 18h.01"
+                  />
+                </svg>
+              </div>
+              <h3>Literasi Informasi & Anti Hoax</h3>
+              <p>
+                Mampu menganalisis informasi sebelum mempercayai atau
+                membagikannya. Selalu cek sumber, kebenaran, dan tujuan dari
+                informasi agar tidak ikut menyebarkan berita palsu.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="panduan">
+        <div class="container">
+          <div class="section-title">
+            <h2 class="scroll-animate">Panduan Keamanan Digital</h2>
+            <p class="scroll-animate" style="transition-delay: 150ms">
+              Tips praktis untuk melindungi data pribadi Anda di dunia maya.
+            </p>
+          </div>
+          <div class="guide-list">
+            <div class="guide-item scroll-animate">
+              <div class="guide-item-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h4>Gunakan Password Kuat & Unik</h4>
+                <p>
+                  Kombinasikan huruf besar, kecil, angka, dan simbol. Jangan
+                  gunakan password yang sama untuk semua akun.
+                </p>
+              </div>
+            </div>
+            <div
+              class="guide-item scroll-animate"
+              style="transition-delay: 150ms"
+            >
+              <div class="guide-item-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h4>Aktifkan Autentikasi Dua Faktor (2FA)</h4>
+                <p>
+                  Lapisan keamanan tambahan selain password, biasanya
+                  menggunakan kode OTP dari HP Anda.
+                </p>
+              </div>
+            </div>
+            <div
+              class="guide-item scroll-animate"
+              style="transition-delay: 300ms"
+            >
+              <div class="guide-item-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h4>Waspada Phishing</h4>
+                <p>
+                  Jangan sembarangan mengklik link atau lampiran dari email atau
+                  pesan yang mencurigakan.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="galeri">
+        <div class="container">
+          <div class="section-title">
+            <h2 class="scroll-animate">Galeri Poster Edukasi</h2>
+            <p class="scroll-animate" style="transition-delay: 150ms">
+              Visualisasi data dan informasi penting seputar literasi digital.
+            </p>
+          </div>
+          <div class="gallery-grid">
+            <div class="gallery-item scroll-animate">
+              <img
+                src="image/posterr anti phising.png"
+                alt="Poster Edukasi 1"
+              />
+            </div>
+            <div class="gallery-item scroll-animate">
+              <img src="image/cloud computing.jpeg" alt="Poster Edukasi 1" />
+            </div>
+            <div class="gallery-item scroll-animate">
+              <img src="image/ioot.jpeg" alt="Poster Edukasi 1" />
+            </div>
+            <div class="gallery-item scroll-animate">
+              <img src="image/aii resiko.jpeg" alt="Poster Edukasi 1" />
+            </div>
+            <div
+              class="gallery-item scroll-animate"
+              style="transition-delay: 150ms"
+            >
+              <img src="image/jejakk digital.jpeg" alt="Poster Edukasi 2" />
+            </div>
+            <div
+              class="gallery-item scroll-animate"
+              style="transition-delay: 300ms"
+            >
+              <img
+                src="image/caraa aman di internet.jpeg"
+                alt="Poster Edukasi 3"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tentang">
+        <div class="container">
+          <div class="section-title">
+            <h2 class="scroll-animate">Tentang Misi Kami</h2>
+            <p class="scroll-animate" style="transition-delay: 150ms">
+              Mengapa website ini ada dan apa tujuan kami untuk Anda.
+            </p>
+          </div>
+
+          <div class="tentang-layout">
+            <div
+              class="tentang-misi scroll-animate"
+              style="transition-delay: 200ms"
+            >
+              <p>
+                Website ini adalah ruang belajar digital bagi pemuda Indonesia.
+                Tujuan kami sederhana: membantu Anda menjadi generasi yang lebih
+                <strong>siap, kritis, dan cerdas</strong> dalam menghadapi era
+                disrupsi. <br /><br />
+                Dengan pengetahuan digital yang kuat, Anda bisa lebih
+                <strong>aman, kreatif, dan percaya diri</strong> menavigasi masa
+                depan yang terus bergerak cepat.
+              </p>
+            </div>
+
+            <div
+              class="tentang-fokus-list scroll-animate"
+              style="transition-delay: 400ms"
+            >
+              <div class="guide-item">
+                <div class="guide-item-icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.747 0-3.332.477-4.5 1.253"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h4>Literasi Digital</h4>
+                  <p>
+                    Memahami cara menggunakan dan menganalisis informasi
+                    digital.
+                  </p>
+                </div>
+              </div>
+
+              <div class="guide-item">
+                <div class="guide-item-icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 20.417l4.16-2.08a1.2 1.2 0 01.78-.22l.473.05a.75.75 0 00.729-.057l.003-.002a.8.8 0 01.78-.22l.473.05a.75.75 0 00.729-.057l.003-.002a.8.8 0 01.78-.22l.473.05a.75.75 0 00.729-.057l.003-.002a.8.8 0 01.78-.22l.473.05a.75.75 0 00.729-.057l.003-.002a.8.8 0 01.78-.22l.473.05a.75.75 0 00.729-.057l.003-.002z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h4>Keamanan Siber</h4>
+                  <p>
+                    Melindungi data pribadi dan waspada terhadap ancaman online.
+                  </p>
+                </div>
+              </div>
+
+              <div class="guide-item">
+                <div class="guide-item-icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m16-6h-2m-2 6h-2M12 5V3m0 16v-2m5.65-13.65l-1.41-1.41M5.76 18.24l-1.41-1.41M18.24 5.76l-1.41 1.41M5.76 5.76l1.41 1.41M12 12a3 3 0 100-6 3 3 0 000 6z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h4>Teknologi Masa Depan</h4>
+                  <p>Memahami perkembangan kecerdasan buatan (AI) dan transformasi perdagangan digital melalui E-commerce sebagai fondasi teknologi masa depan.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p class="scroll-animate">© 2025 Literasi Digital untuk Pemuda.</p>
+        <p class="scroll-animate" style="transition-delay: 150ms">
+          Dibuat oleh tim <b>when yah bisa jadi fullstack ??</b>
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // --- 1. Skrip Toggle Navbar Mobile ---
+        const menuBtn = document.getElementById("menu-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const iconBurger = document.getElementById("icon-burger");
+        const iconClose = document.getElementById("icon-close");
+
+        menuBtn.addEventListener("click", () => {
+          // Toggle menu
+          mobileMenu.classList.toggle("hidden");
+
+          // Toggle ikon
+          iconBurger.classList.toggle("hidden");
+          iconClose.classList.toggle("hidden");
+
+          // Toggle ARIA expanded
+          const isExpanded = menuBtn.getAttribute("aria-expanded") === "true";
+          menuBtn.setAttribute("aria-expanded", !isExpanded);
+        });
+
+        // Tutup menu mobile jika link di-klik (untuk navigasi single-page)
+        mobileMenu.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            mobileMenu.classList.add("hidden");
+            iconBurger.classList.remove("hidden");
+            iconClose.classList.add("hidden");
+            menuBtn.setAttribute("aria-expanded", "false");
+          });
+        });
+
+        // --- 2. Skrip Animasi Scroll (IntersectionObserver) ---
+
+        // Menargetkan semua elemen dengan kelas .scroll-animate
+        const animatedElements = document.querySelectorAll(".scroll-animate");
+
+        // Definisikan kelas CSS yang akan di-toggle
+        const hiddenClass = "is-hidden";
+        const visibleClass = "is-visible";
+
+        const observerOptions = {
+          root: null, // Menggunakan viewport browser
+          rootMargin: "0px",
+          threshold: 0.1, // 10% elemen harus terlihat
+        };
+
+        const observerCallback = (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              // --- 1. ELEMEN MASUK (TERLIHAT) ---
+              // Selalu tampilkan elemen saat masuk ke layar
+              entry.target.classList.add(visibleClass);
+              entry.target.classList.remove(hiddenClass);
+            } else {
+              // --- 2. ELEMEN KELUAR (TIDAK TERLIHAT) ---
+              // Kita cek posisinya untuk tahu dia keluar ke arah mana
+
+              // entry.boundingClientRect.y > 0 berarti elemen keluar di BAWAH viewport
+              // (karena kita sedang scroll ke ATAS)
+              if (entry.boundingClientRect.y > 0) {
+                // Reset animasi HANYA jika kita scroll ke ATAS
+                entry.target.classList.add(hiddenClass);
+                entry.target.classList.remove(visibleClass);
+              }
+
+              // Jika elemen keluar di ATAS viewport (y < 0, karena kita scroll ke BAWAH),
+              // kita tidak melakukan apa-apa. Ini membuatnya tetap 'visible'
+              // saat kita scroll ke bawah melewatinya.
+            }
+          });
+        };
+
+        // Buat observer
+        const observer = new IntersectionObserver(
+          observerCallback,
+          observerOptions
+        );
+
+        // Amati setiap elemen
+        animatedElements.forEach((el) => {
+          // Atur kondisi awal (hidden) saat halaman dimuat
+          el.classList.add(hiddenClass);
+          // Mulai mengamati
+          observer.observe(el);
+        });
+      });
+    </script>
+  </body>
+</html>
