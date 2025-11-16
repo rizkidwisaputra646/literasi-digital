@@ -95,8 +95,8 @@ a {
     color: var(--color-blue-600);
 }
 .nav-menu-desktop {
+    margin-left: auto;
     display: none; /* Default hidden */
-    align-items: center;
     gap: 2rem; /* space-x-8 */
 }
 .nav-menu-desktop a {
@@ -469,3 +469,180 @@ section {
         grid-template-columns: repeat(3, 1fr);
     }
 }
+
+
+ .search-box {
+        max-width: 400px;
+        margin: 0 auto 2rem auto;
+        display: flex;
+      }
+      .search-box input {
+        width: 100%;
+        padding: 0.6rem;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 1rem;
+      }
+
+      .pagination-modern {
+        display: flex;
+        justify-content: center;
+        gap: 0.4rem;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+      }
+
+      .pagination-modern button {
+        padding: 6px 12px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        background: var(--color-blue-600);
+        color: white;
+        font-weight: 600;
+        transition: 0.2s;
+      }
+
+      .pagination-modern button.active {
+        background: var(--color-gray-800);
+      }
+
+      .pagination-modern span {
+        padding: 6px 10px;
+        color: var(--color-gray-700);
+        font-weight: bold;
+      }
+
+      /* =============================== */
+      /*         BOOK CARD STYLE        */
+      /* =============================== */
+
+      .book-grid {
+        display: grid;
+        gap: 2rem;
+        /* [MODIFIKASI] Grid responsif otomatis */
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      }
+
+      .book-card {
+        background: var(--color-white);
+        border-radius: 0.75rem;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        text-align: center;
+        padding-bottom: 1rem;
+        /* [MODIFIKASI] Transisi untuk hover */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      /* [MODIFIKASI] Efek hover untuk kartu */
+      .book-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.15);
+      }
+
+      /* [MODIFIKASI] Wadah cover dengan rasio aspek 187:249 */
+      .book-cover {
+        width: 100%;
+        position: relative;
+        /* Rasio Tinggi/Lebar (249 / 187 * 100%) */
+        padding-top: calc(249 / 187 * 100%);
+        overflow: hidden;
+        background-color: #f4f4f7; /* Latar belakang jika gambar gagal dimuat */
+      }
+
+      /* [MODIFIKASI] Gambar di dalam wadah cover */
+      .book-cover img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Memastikan gambar mengisi penuh (crop jika perlu) */
+        object-position: center top; /* Fokus di bagian atas jika di-crop */
+      }
+
+      .book-card h3 {
+        margin: 1rem;
+        color: var(--color-gray-900);
+        font-size: 1.25rem;
+        font-weight: 700;
+        /* [MODIFIKASI] Menyamakan tinggi judul agar tombol sejajar */
+        min-height: 3.75rem;
+      }
+
+      .book-desc {
+        color: var(--color-gray-600);
+        padding: 0 1rem;
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+      }
+
+      .book-btn {
+        display: inline-block;
+        padding: 0.5rem 1.25rem;
+        background: var(--color-blue-600);
+        color: var(--color-white);
+        border-radius: 999px;
+        font-weight: 600;
+        transition: background 0.3s;
+      }
+
+      .book-btn:hover {
+        background: var(--color-blue-700);
+      }
+
+      /* Blok @media (min-width: 768px) tidak lagi diperlukan untuk .book-grid */
+
+      /* --- Tambahan untuk Tampilan Modern (Polish) --- */
+
+      /* Feedback visual saat search box diketik */
+      .search-box input:focus {
+        outline: 2px solid var(--color-blue-600);
+        outline-offset: 2px;
+        border-color: var(--color-blue-600);
+      }
+
+      /* Style untuk tombol pagination (disabled) */
+      .pagination-modern button:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
+
+      /* [MODIFIKASI] Efek hover untuk tombol paginasi */
+      .pagination-modern button:not(:disabled):not(.active):hover {
+        background: var(--color-blue-700);
+      }
+
+      @media (max-width: 600px) {
+        .book-grid {
+          gap: 1rem;
+
+          /* [MODIFIKASI] 
+      Paksa untuk selalu menampilkan 2 kolom
+    */
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .book-card h3 {
+          /* [MODIFIKASI] 
+      Kecilkan font karena kartu lebih sempit
+    */
+          font-size: 1rem; /* Lebih kecil agar pas di 2 kolom */
+
+          /* [MODIFIKASI] 
+      Sesuaikan tinggi minimal untuk 2 baris
+      (1.0rem * ~1.5 line-height * 2 lines)
+    */
+          min-height: 3rem;
+        }
+
+        .book-btn {
+          /* [MODIFIKASI] 
+      Kecilkan tombol agar proporsional
+    */
+          padding: 0.3rem 0.8rem;
+          font-size: 0.8rem;
+        }
+      }
